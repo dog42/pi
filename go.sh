@@ -1,5 +1,6 @@
 #!/bin/bash
 echo TROLOLOLOLOOOOOOO
+whoami
 
 if [ ! -f /home/pi/.state  ]; then
         echo "1" > /home/pi/.state
