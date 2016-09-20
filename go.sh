@@ -4,7 +4,7 @@ echo TROLOLOLOLOOOOOOO
 if [ ! -f /home/$USER/.state  ]; then
         echo "1" > /home/$USER/.state
         echo "das erste mal"
-        ./home/pi/.piconf/firstrun.sh
+        ./home/pi/.piconf/pi-master/firstrun.sh
 else
         echo "schon alt"
 fi
