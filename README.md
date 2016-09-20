@@ -28,3 +28,9 @@ add the folowing to `/etc/rc.local` to auto load and run the configfiles on star
 `unzip /home/pi/.master.zip -d /home/pi/.piconf`
 `rm /home/pi/.master.zip`
 `./home/pi/.piconf/pi-master/go.sh`
+
+
+
+
+
+Also see [MultiPiRemoteControl](https://gitlab.com/jhamfler/MultiPiRemoteControl/tree/master)
