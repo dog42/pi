@@ -1,8 +1,8 @@
 #!/bin/bash
 echo TROLOLOLOLOOOOOOO
 
-if [ ! -f /home/$USER/.state  ]; then
-        echo "1" > /home/$USER/.state
+if [ ! -f /home/pi/.state  ]; then
+        echo "1" > /home/pi/.state
         echo "das erste mal"
         ./home/pi/.piconf/pi-master/firstrun.sh
 else
