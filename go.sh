@@ -11,7 +11,8 @@ function sethostname(){
 	regex1='((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])'
 	if [[ $ip =~ $regex1 ]]
 		then
-		echo pi${BASH_REMATCH[3]} > /etc/hostname
+		echo mypi${BASH_REMATCH[3]} > /etc/hostname
+		hostname mypi${BASH_REMATCH[3]}
 		echo ">>>HOSTNAME SET TO: pi${BASH_REMATCH[3]}"
 	fi
 }
