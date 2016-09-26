@@ -1,6 +1,6 @@
 #!/bin/bash
-echo TROLOLOLOLOOOOOOO
-whoami
+echo LETS START
+whoamicd 
 
 if [ ! -f /home/pi/.state  ]; then
         echo "1" > /home/pi/.state
