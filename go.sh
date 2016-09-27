@@ -6,6 +6,17 @@ function clean() {
 	sudo rm -rf /home/pi/.piconf
 }
 
+function blink() {
+	echo "7" > > /sys/class/gpio/export
+	echo "out" > /sys/class/gpio/gpio7/direction
+	for i in {1...11}
+	do
+		echo "0" > /sys/class/gpio/gpio17/value
+		sleep 1
+		echo "1" > /sys/class/gpio/gpio17/value
+	done
+}
+
 function sethostname(){
 	ip=$(ip -4 a s eth0)
 	regex1='((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])'
@@ -36,3 +47,4 @@ else
 fi
 
 clean
+blink 
