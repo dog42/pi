@@ -11,9 +11,9 @@ function blink() {
 	echo "out" > /sys/class/gpio/gpio7/direction
 	for i in {1...11}
 	do
-		echo "0" > /sys/class/gpio/gpio17/value
+		echo "0" > /sys/class/gpio/gpio7/value
 		sleep 1
-		echo "1" > /sys/class/gpio/gpio17/value
+		echo "1" > /sys/class/gpio/gpio7/value
 	done
 }
 
