@@ -1,5 +1,4 @@
-
-
+#!/bin/bash
 
 function clean() {
 	echo ">>>cleanup"
