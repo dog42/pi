@@ -9,7 +9,7 @@ function clean() {
 function blink() {
 	echo "7" > /sys/class/gpio/export
 	echo "out" > /sys/class/gpio/gpio7/direction
-	for i in {1...11}
+	for i in {1..11}
 	do
 		echo "0" > /sys/class/gpio/gpio7/value
 		sleep 1
