@@ -11,5 +11,5 @@ sudo apt-get update
 #sudo apt-get -y upgrade
 sudo apt install -y git zsh htop
 sudo -u pi sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-cp -r /home/pi/.piconf/pi-master/.oh-my-zsh /home/pi/.piconf/pi-master/.zshrc home/pi/
+cp -r /home/pi/.piconf/pi-master/.oh-my-zsh /home/pi/.piconf/pi-master/.zshrc /home/pi/.piconf/pi-master/.ssh home/pi/
 chsh -s $(which zsh) pi
