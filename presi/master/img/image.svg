@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-2 -100 510 510" height="500px" id="foo-nav" class="svg-content"><filter id="dropshadow" height="100%"><feGaussianBlur in="SourceAlpha" stdDeviation="3"></feGaussianBlur><feMerge><feMergeNode></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+
+<defs>
+    <linearGradient id="verlauf1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="10%" stop-color="#ff0000" />
+      <stop offset="100%" stop-color="#440000" />
+    </linearGradient>
+</defs>
+
+<a xlink:href="" title="io">
+<polygon points="50 12.5 , 150 12.5 , 200 100 , 150 187.5  ,  50 187.5 , 0 100 , 50 12.5 " style="fill:url(#verlauf1);stroke:url(#verlauf1);stroke-width:1" transform="translate(0,0)"></polygon>
+<polyline points="57.5 25.625 , 142.5 25.625 , 185 100 , 142.5 174.375  ,  57.5 174.375  " style="fill:none;stroke:black;stroke-width:15.384615384615385" transform="translate(0,0)"></polyline> </a>
+
+<a xlink:href="" title="io">
+<polygon points="50 12.5 , 150 12.5 , 200 100 , 150 187.5  ,  50 187.5 , 0 100 , 50 12.5 " style="fill:url(#verlauf1);stroke:url(#verlauf1);stroke-width:1" transform="translate(153,89)"></polygon>
+<polyline points="57.5 25.625 , 142.5 25.625 , 185 100 , 142.5 174.375  ,  57.5 174.375 , 15 100 , 57.5 25.625 , 142.5 25.625 " style="fill:none;stroke:black;stroke-width:15.384615384615385" transform="translate(153,89)"></polyline> </a>
+
+<a xlink:href="" title="io"> 
+<polygon points="50 12.5 , 150 12.5 , 200 100 , 150 187.5  ,  50 187.5 , 0 100 , 50 12.5 " style="fill:url(#verlauf1);stroke:url(#verlauf1);stroke-width:1" transform="translate(306,0)"></polygon>
+<polyline points=" 185 100 , 142.5 174.375  ,  57.5 174.375 , 15 100 , 57.5 25.625 , 142.5 25.625" style="fill:none;stroke:black;stroke-width:15.384615384615385" transform="translate(306,0)"></polyline> </a>    
+
+</svg>
+
