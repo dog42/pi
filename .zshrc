@@ -1,5 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/$USER/.oh-my-zsh
+export LANGUAGE="de_DE:de"
+export LANG="de_DE.UTF-8"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
