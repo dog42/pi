@@ -2,7 +2,7 @@
 .reveal h2 {
     font-size: 1.9em;
 }
-.reveal .slide-number, .reveal .slide-footer .slide-footer-content{
+.reveal .slide-number, .reveal .slide-footer {
   font-size: 20px;
   background: none;
 }
@@ -55,13 +55,13 @@
 .reveal .slide-footer-logo {
   width: 10%;
   float: left;
-  margin-right: 3%;
+  /*margin-right: 3%;*/
   /*padding-left: 50px;*/
 }
 
 .reveal .slide-footer-logo img {
-  width: 100%;
-  padding-bottom: 13px;
+  
+  padding-top: 0px;
 }
 
 .reveal .slide-footer-logo2 {
@@ -72,14 +72,16 @@
 }
 
 .reveal .slide-footer-logo2 img {
-  width: 100%;
-  padding-bottom: 3px;
+  
+  padding-top: 0px;
 }
 
 .reveal .slide-footer-content {
+  font-size: 22px;
   width: 50%;
   float: left;
   text-shadow: none;
+  background: none;
 }
 
 
