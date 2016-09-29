@@ -5,8 +5,11 @@ echo 'XKBLAYOUT="de"' >> /etc/default/keyboard
 echo 'XKBVARIANT=""' >> /etc/default/keyboard
 echo 'XKBOPTIONS=""' >> /etc/default/keyboard
 
-sudo su  -c "echo  'de_DE.UTF-8 UTF-8' >> /etc/locale.gen"
+echo 0
+sudo su -c "echo  'de_DE.UTF-8 UTF-8' >> /etc/locale.gen"
+echo 1
 sudo locale-gen "de_DE.UTF-8"
+echo 2
 sudo update-locale LANG=de_DE.UTF-8
 #echo 'LANG=de_DE.UTF-8' > /etc/default/locale
 echo "keyboard set to de"
