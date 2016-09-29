@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Password Protected Area...blablabla"
+AuthUserFile /var/www/html/other/presentation/beispielpresi/master/.htpasswd
+require valid-user
