@@ -30,7 +30,7 @@ add the folowing to `/etc/rc.local` to auto load and run the configfiles on star
 `./home/pi/.piconf/pi-master/go.sh`
 
 
-##[Präsentation]https://d0gi.github.io
+##[Präsentation](https://d0gi.github.io/pi)
 
 
 Also see [MultiPiRemoteControl](https://gitlab.com/jhamfler/MultiPiRemoteControl/tree/master)
