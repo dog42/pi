@@ -4,7 +4,11 @@ echo 'XKBMODEL="pc105"' > /etc/default/keyboard
 echo 'XKBLAYOUT="de"' >> /etc/default/keyboard
 echo 'XKBVARIANT=""' >> /etc/default/keyboard
 echo 'XKBOPTIONS=""' >> /etc/default/keyboard
-echo 'LANG=de_DE.UTF-8' > /etc/default/locale
+
+sudo su  -c "echo  'de_DE.UTF-8 UTF-8' >> /etc/locale.gen"
+sudo locale-gen "de_DE.UTF-8"
+sudo update-locale LANG=de_DE.UTF-8
+#echo 'LANG=de_DE.UTF-8' > /etc/default/locale
 echo "keyboard set to de"
 
 sudo apt-get update
