@@ -18,36 +18,33 @@ GPIO.setup(ECHO,GPIO.IN)
 print "Ultraschall Entfernungsmessung"
 
 while True:
-
-
 	# Messung ausloesen
-        GPIO.output(TRIGGER, False)
-        time.sleep(0.5)
-        GPIO.output(TRIGGER, True)
-        time.sleep(0.00001)
-        GPIO.output(TRIGGER, False)
+    GPIO.output(TRIGGER, False)
+    time.sleep(0.5)
+    GPIO.output(TRIGGER, True)
+    time.sleep(0.00001)
+    GPIO.output(TRIGGER, False)
 
-        while GPIO.input(ECHO) == 0:
-          pass
+    while GPIO.input(ECHO) == 0:
+        pass
 
 	# Startzeit festhalten
-        Start = time.time()
+    Start = time.time()
 
-        while GPIO.input(ECHO) == 1:
-          pass
+    while GPIO.input(ECHO) == 1:
+        pass
 
 	# Stopzeit festhalten
-        Stop = time.time()
+    Stop = time.time()
 
 	# Zeitdifferenz berechnen
-        Zeit = Stop - Start
+    Zeit = Stop - Start
 
 	# Entfernung in Meter berechnen
-        Entfernung = Zeit * (Schallgeschwindigkeit/2)
-	Entfernung = Entfernung * 100
-	Entfernung = round(Entfernung, 2)
-
-        print "Abstand: ", Entfernung, " cm"
-        time.sleep(1)
+    Entfernung = Zeit * ( Schallgeschwindigkeit / 2 )
+    Entfernung = Entfernung * 100
+    Entfernung = round(Entfernung, 2)
+    print "Abstand: ", Entfernung, " cm"
+    time.sleep(1)
 
 GPIO.cleanup()

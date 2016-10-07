@@ -18,6 +18,13 @@ sudo -u pi sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/mas
 cp -r /home/pi/.piconf/pi-master/.oh-my-zsh /home/pi/.piconf/pi-master/.zshrc /home/pi/.piconf/pi-master/.ssh home/pi/
 chsh -s $(which zsh) pi
 
+cd /home/pi
+git clone git://git.drogon.net/wiringPi
+cd /home/pi/wiringPi
+git pull origin
+./build
+
+
 
 # #activate I2C
 # sudo mknod /dev/i2c-0 c 89 0

@@ -1,3 +1,5 @@
+// install wiringPI first and add "-l wiringPi" to compileinstuction
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <wiringPi.h>
