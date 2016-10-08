@@ -3,7 +3,7 @@
 function clean() {
 	echo ">>>cleanup"
 	sudo rm -rf /home/pi/.master.zip 
-	sudo rm -rf /home/pi/.piconf
+	#sudo rm -rf /home/pi/.piconf
 }
 
 function blink() {
@@ -30,7 +30,7 @@ function sethostname(){
 
 echo ">>>LETS START"
 whoami
-sethostname
+#sethostname
 
 
 if [ ! -f /home/pi/.state  ]; then
