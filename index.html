@@ -140,6 +140,16 @@ https://github.com/D0gi/reveal.js
 
 				<p class="bla">GPIOs</p>
 
+				- ggf. Zugriffsrechte ändern
+
+					`sudo chmod 666 /sys/class/gpio`
+
+
+
+				--
+
+				<p class="bla">GPIOs</p>
+
 
 				<img  src="fritzing/led_Steckplatine.png" width="65%" href="#" ></img>
 
@@ -209,21 +219,65 @@ https://github.com/D0gi/reveal.js
 				<p class="bla">I²C </p>
 
 				##activate I2C
-				`sudo mknod /dev/i2c-0 c 89 0`
-				
-				`sudo mknod /dev/i2c-1 c 89 1`
-				
-				`sudo usermod -aG i2c pi`
-				
-				`sudo cat /etc/modprobe.d/raspi-blacklist.conf`
+				- device/file erzeugen
 
-				 (/etc/modprobe.d/fbdev-blacklist.conf)
+					`sudo mknod /dev/i2c-0 c 89 0`
+				
+					`sudo mknod /dev/i2c-1 c 89 1`
+				- Nutzer Zugriffsrechte gewähren
+
+					`sudo usermod -aG i2c pi`
+				
+				- /etc/modprobe.d/raspi-blacklist.conf editieren
+				<pre><code>
 				blacklist spi and i2c by default 
 				blacklist spi-bcm2708
 				blacklist i2c-bcm2708
+				</code></pre>
+
+				- modul hinzufügen				
+					`sudo nano /etc/modules` 
+					i2c-dev
+
+				--
+
+				<pre><code>
+					
+#include <stdio.h>
+#include <stdlib.h>
+#include <wiringPi.h>
+ 
+ 
+#define TRIG 1
+#define ECHO 5
+#define LED  6
+ 
+void setup() {
+        wiringPiSetup();
+        pinMode(TRIG, OUTPUT);
+        pinMode(LED, OUTPUT);
+        pinMode(ECHO, INPUT);
+ 
+        //TRIG pin must start LOW
+        digitalWrite(TRIG, LOW);
+        delay(30);
+}
+ 
+int getCM() {
+        //Send trig pulse
+        digitalWrite(TRIG, HIGH);
+        delayMicroseconds(20);
+        digitalWrite(TRIG, LOW);
+ 
+        //Wait for echo start
+        while(digitalRead(ECHO) =
+				</code></pre>
+			
 				
-				`sudo nano /etc/modules` 
-				i2c-dev
+
+				
+					
+				
 				
 				--
 
@@ -253,6 +307,7 @@ https://github.com/D0gi/reveal.js
 				</script>
 			</section>
 
+				
 			
 
 			<section data-markdown section data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-element-attributes="{_\s*?([^}]+?)}" data-separator-notes="^note:">
@@ -279,8 +334,8 @@ https://github.com/D0gi/reveal.js
 				</script>
 			</section>
 
-
-			
+			<!-- ###################### Wichtig, Damit Code Farbig, Drinn lassen!-->
+			<section><pre><code></code></pre></section>
 			<!-- ############################################################################################################################# -->
 		</div>
 		<div class="slide-footer">
@@ -342,8 +397,8 @@ https://github.com/D0gi/reveal.js
 		// The "normal" size of the presentation, aspect ratio will be preserved
 	    // when the presentation is scaled to fit different resolutions. Can be
 	    // specified using percentage units.
-	    width: 1280,
-	    height: 720,
+	    //width: 1280,
+	    //height: 720,
 	    //width: 1920,
 	    //height: 1080,
 
