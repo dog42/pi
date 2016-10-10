@@ -68,25 +68,132 @@ https://github.com/D0gi/reveal.js
 				## Automation mit 
 				# Raspberry Pi 
 				## First steps
+				<img id="pi"  src="img/pi.png" width="45%" href="#"  ></img>
 
 
 				note: BLABLABLA
 
 				--
 
-				#Gliederung
+				
 				<i class="fa fa-2x fa-list"></i>
-
-				--
-
 
 				<ul style="list-style-type:none">
 				<li><h3>1. Einleitung</h3></li>
-				<li><h3>2. Grundlaegen</h3></li>
+				<li><h3>2. Grundlagen</h3></li>
+				<li><h3>3. GPIOs</h3></li>
+				<li><h3>4. Motoren & H-Brücke</h3></li>
+				<li><h3>5. Ultraschall Modul HC-SR04</h3></li>
+				<li><h3>6. I²C</h3></li>
+				<li><h3>7. Servos</h3></li>
+				<li><h3>8. REST & co</h3></li>
 				</ul>			
 				</script>
 			</section>
 
+			<section data-markdown section data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-element-attributes="{_\s*?([^}]+?)}" data-separator-notes="^note:">
+				<script type="text/template">
+				<p class="bla">Einleitung </p>
+				
+				# Einleitung
+				
+				note: $nicht vollständig
+
+								
+				</script>
+			</section>
+
+			<section data-markdown section data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-element-attributes="{_\s*?([^}]+?)}" data-separator-notes="^note:">
+				<script type="text/template">
+				<p class="bla">Grundlagen</p>
+				
+				# Grundlagen
+				
+				note: $nicht vollständig
+
+				--
+
+				<p class="bla">Grundlagen</p>			
+				
+				<img  src="fritzing/Steckplatine.png" width="65%" href="#" ></img>
+
+								
+				</script>
+			</section>
+
+			<section data-markdown section data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-element-attributes="{_\s*?([^}]+?)}" data-separator-notes="^note:">
+				<script type="text/template">
+				<p class="bla">GPIOs</p>
+				
+				# GPIOs		
+
+				note: $nicht vollständig
+
+				--
+
+				<p class="bla">GPIOs</p>
+
+
+				<img id="gpio_pin" src="img/gpio_pin_dark.png" width="75%" href="#" ></img>
+
+				--
+
+				<p class="bla">GPIOs</p>
+
+
+				<img  src="fritzing/led_Steckplatine.png" width="65%" href="#" ></img>
+
+				--
+
+				<p class="bla">GPIOs</p>
+				
+				<img  src="fritzing/led_taster_Steckplatine.png" width="65%" href="#" ></img>
+
+								
+				</script>
+			</section>
+
+			<section data-markdown section data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-element-attributes="{_\s*?([^}]+?)}" data-separator-notes="^note:">
+				<script type="text/template">
+				<p class="bla">Motoren & H-Brücke</p>
+				
+				# Motoren & H-Brücke
+
+				--
+
+				<p class="bla">Motoren & H-Brücke</p>
+
+				<img id="h-bridge" src="img/h-bridge_2.gif" width="70%" href="#" onclick="changehbridge('h-bridge');" ></img>
+				
+				note: Schaltsymbol für Motor ist falsch!!!!
+
+				--
+
+				<p class="bla">Motoren & H-Brücke</p>
+
+				<img  src="fritzing/hbrucke_Steckplatine.png" width="65%" href="#" ></img>
+
+								
+				</script>
+			</section>
+
+			<section data-markdown section data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-element-attributes="{_\s*?([^}]+?)}" data-separator-notes="^note:">
+				<script type="text/template">
+				<p class="bla">Ultraschall Modul HC-SR04 </p>
+				
+				# Ultraschall Modul HC-SR04
+				
+				note: $nicht vollständig
+
+				--
+
+				<p class="bla">Ultraschall Modul HC-SR04 </p>
+
+				<img  src="fritzing/ultraschall_Steckplatine.png" width="65%" href="#" ></img>
+
+								
+				</script>
+			</section>
 
 
 
@@ -146,27 +253,31 @@ https://github.com/D0gi/reveal.js
 				</script>
 			</section>
 
+			
+
 			<section data-markdown section data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-element-attributes="{_\s*?([^}]+?)}" data-separator-notes="^note:">
 				<script type="text/template">
-				<p class="bla">BLABLABLA </p>
+				<p class="bla">Servos</p>
 				
-				# BLABLABLA
+				# Servos
 				
-
-				--
-
-				<p class="bla">BLABLABLA </p>
-
-				### BLABLABLA
-
 				note: $nicht vollständig
 
-				
+								
 				</script>
 			</section>
 
+			<section data-markdown section data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-element-attributes="{_\s*?([^}]+?)}" data-separator-notes="^note:">
+				<script type="text/template">
+				<p class="bla">REST & co </p>
+				
+				# REST & co
+				
+				note: $nicht vollständig
 
-		
+								
+				</script>
+			</section>
 
 
 			
@@ -205,24 +316,19 @@ https://github.com/D0gi/reveal.js
 		document.getElementById('theme').setAttribute('href','css/theme/' + mystyles[mystyle].css); 
 		document.getElementById('logo').setAttribute('src','img/' + mystyles[mystyle].logo);
 		document.getElementById('i2cimg').setAttribute('src','img/i2c_' + mystyle + '.svg');
-		document.getElementById('nc').setAttribute('src','img/nc_' + mystyle + '.svg');
-		document.getElementById('pipe').setAttribute('src','img/pipe_' + mystyle + '.svg');
-		document.getElementById('rule').setAttribute('src','img/rule_' + mystyle + '.svg');
-		document.getElementById('i2c_elements').setAttribute('src','img/i2c_elements_' + mystyle + '.svg');
-		document.getElementById('multirule').setAttribute('src','img/multirule_' + mystyle + '.svg');
-		document.getElementById('433mhz').setAttribute('src','img/433mhz_' + mystyle + '.svg');
+		document.getElementById('gpio_pin').setAttribute('src','img/gpio_pin_' + mystyle + '.png');
 		return;
 	}
 
 
-	var zi=1;
+	var zi=2;
+	function changehbridge(id){
+		zi = (zi>=6||zi<=1) ? 2 : zi+1;
+		document.getElementById(id).setAttribute('src','img/h-bridge_'+zi+'.gif');
+		return;
+	}
+
 	var zj=0;
-	function changeap(id){
-		zi = (zi>=3||zi<=0) ? 1 : zi+1;
-		document.getElementById(id).setAttribute('src','img/ap'+zi+'.svg');
-		return;
-	}
-	
 	function changemesh(id){
 		zj = (zj>=3||zj<=0) ? 1 : zj+1;
 		document.getElementById(id).setAttribute('src','img/mesh'+zj+'.svg');
