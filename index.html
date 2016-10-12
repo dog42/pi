@@ -117,6 +117,21 @@ https://github.com/D0gi/reveal.js
 				
 				<img  src="fritzing/Steckplatine.png" width="65%" href="#" ></img>
 
+				--
+
+				<p class="bla">Grundlagen</p>			
+				
+				<img  id="aktor" src="img/aktor1.png" width="80%" href="#" onclick="secondimg('aktor','img/aktor2.png')" ></img></p>
+
+				--
+
+				<p class="bla">Grundlagen</p>			
+				
+				<img id="npn" src="img/npnvspnp_dark.png" width="65%" href="#" ></img>
+			 	
+				
+
+
 								
 				</script>
 			</section>
@@ -385,10 +400,14 @@ int getCM() {
 		document.getElementById('i2cimg').setAttribute('src','img/i2c_' + mystyle + '.svg');
 		document.getElementById('gpio_pin').setAttribute('src','img/gpio_pin_' + mystyle + '.png');
 		document.getElementById('servo').setAttribute('src','img/servo_' + mystyle + '.png');
+		document.getElementById('npn').setAttribute('src','img/npnvspnp_' + mystyle + '.png');
 		return;
 	}
 
 
+	function secondimg(id,img){
+		document.getElementById(id).setAttribute('src',img);
+	}
 	var zi=2;
 	function changehbridge(id){
 		zi = (zi>=6||zi<=1) ? 2 : zi+1;
