@@ -139,6 +139,8 @@ https://github.com/D0gi/reveal.js
 				- `sudo` - Kommandos als alternativer Nutzer (root) ausführen
 
 				- `chmod` - Zugriffsrechte ändern
+
+				- `man` - "Bedinungsanleitung" für Programme
 			 	
 				
 
@@ -255,6 +257,28 @@ https://github.com/D0gi/reveal.js
 
 				<img  src="fritzing/led_Steckplatine.png" width="65%" href="#" ></img>
 
+
+				--
+
+				<p class="bla">GPIOs</p>
+
+				<img id="offen" src="img/offen_dark.png" width="33%" href="#" ></img>
+
+				--
+
+				<p class="bla">GPIOs</p>
+
+				<img id="pullup" src="img/pullup_dark.png" width="33%" href="#" ></img>
+				
+				--
+
+				<p class="bla">GPIOs</p>
+
+				<img id="pulldown" src="img/pulldown_dark.png" width="33%" href="#" ></img>
+				
+
+
+
 				--
 
 				<p class="bla">GPIOs</p>
@@ -317,6 +341,14 @@ https://github.com/D0gi/reveal.js
 				<p class="bla">Motoren & H-Brücke</p>
 				
 				# Motoren & H-Brücke
+
+
+				--
+
+				<p class="bla">Motoren & H-Brücke</p>
+
+				<img  id="transistorout" src="img/transistorout_dark.png" width="45%" href="#" ></img>
+
 
 				--
 
@@ -535,6 +567,10 @@ int getCM() {
 		document.getElementById('gpio_pin').setAttribute('src','img/gpio_pin_' + mystyle + '.png');
 		document.getElementById('servo').setAttribute('src','img/servo_' + mystyle + '.png');
 		document.getElementById('npn').setAttribute('src','img/npnvspnp_' + mystyle + '.png');
+		document.getElementById('pullup').setAttribute('src','img/pullup_' + mystyle + '.png');
+		document.getElementById('pulldown').setAttribute('src','img/pulldown_' + mystyle + '.png');
+		document.getElementById('offen').setAttribute('src','img/offen_' + mystyle + '.png');
+		document.getElementById('transistorout').setAttribute('src','img/transistorout_' + mystyle + '.png');
 		return;
 	}
 
