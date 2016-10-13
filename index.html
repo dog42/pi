@@ -117,6 +117,28 @@ https://github.com/D0gi/reveal.js
 				<p class="bla">Grundlagen</p>			
 				
 				<img id="npn" src="img/npnvspnp_dark.png" width="65%" href="#" ></img>
+
+				--
+
+				<p class="bla">Grundlagen</p>
+
+				- `cd` - Verzeichniswechsel
+
+				- `ls` - Verzeichnisinhalt anzeigen
+
+				- `cp` - Kopieren
+
+				- `rm` - Entfernen
+
+				- `echo` - Ausgebe von Text
+
+				- `cat` - Ausgebe von Dateiinhalten
+
+				- `nano` - Texteditor
+
+				- `sudo` - Kommandos als alternativer Nutzer (root) ausführen
+
+				- `chmod` - Zugriffsrechte ändern
 			 	
 				
 
@@ -166,11 +188,65 @@ https://github.com/D0gi/reveal.js
 
 				<p class="bla">GPIOs</p>
 
-				- ggf. Zugriffsrechte ändern
+				GPIOs ansteuern über:
 
-					`sudo chmod 666 /sys/class/gpio`
+				- sys-Dateisystem
+
+				- Programm `gpio` (wiringPi)
+
+				- Bibliotheken (in C, Python, etc.)
+
+				- ...
+
+				--
+
+				<p class="bla">GPIOs - sys-Dateisystem</p>
+
+				- `ls /sys/class/gpio`
+
+					<pre><code>export  gpiochip0  unexport</code></pre>
+
+				- GPIO aktivieren:
+
+				    - ggf. Zugriffsrechte ändern
+
+						`sudo chmod 666 /sys/class/gpio`
+
+					- GPIO Nr. X exportieren
+
+						`echo "7" >> export `
+
+				- GPIO deaktivieren:
+					
+					`echo "7" >> unexport `
+
+				--
+
+				<p class="bla">GPIOs - sys-Dateisystem</p>
+
+				- `ls /sys/class/gpio/gpio7 `
+				
+					<pre><code>active_low  device  direction  edge  power  subsystem  uevent  value</code></pre>
+
+					- direction: `in` / `out`
+
+					- value: `1` / `0`
+
+					- active_low: Eingangssignal invertieren (`1` / `0`)
+
+					- edge: für interrupt (`none`, `rising`, `falling`)
 
 
+				--
+
+				<p class="bla">GPIOs -Programm `gpio`</p>
+
+				--
+
+				<p class="bla">GPIOs -Bibliotheken</p>
+
+
+				
 
 				--
 
@@ -184,6 +260,53 @@ https://github.com/D0gi/reveal.js
 				<p class="bla">GPIOs</p>
 				
 				<img  src="fritzing/led_taster_Steckplatine.png" width="65%" href="#" ></img>
+
+				--
+				
+				gpio -g wfi 17 falling
+
+				(wfi – wait for interrupt)
+
+
+
+				http://www.forum-raspberrypi.de/Thread-sensor-signal-per-interrupt-abfragen
+
+				http://www.raspberry-pi-geek.de/Magazin/2013/05/Tricks-zum-Programmieren-der-GPIO-Schnittstelle
+
+				http://kampis-elektroecke.de/?page_id=3740
+				1
+				GPIO.setup(24, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+				Anschließend deklariere ich die ISR, also den Programmabschnitt der ausgeführt werden soll sobald ein Interrupt ausgelöst wird:
+
+				￼
+				def Interrupt(channel):
+				   global Counter
+				   Counter = Counter + 1
+				   print "Counter " + str(Counter)
+				1
+				2
+				3
+				4
+				def Interrupt(channel):
+				   global Counter
+				   Counter = Counter + 1
+				   print "Counter " + str(Counter)
+				Die Zeile
+
+				￼
+				global Counter
+				1
+				global Counter
+				sorgt dafür, dass ich die Variable Counter in der ISR verändern darf, da dadurch eine Referenz auf die globale Variable Counter erzeugt wird.
+				Dies ist notwendig da ich die Variable Counter verändern möchte. Wenn ich sie nur lesen will, kann ich diese Zeile weglassen.
+				Die anderen beiden Zeilen erhöhen die Variable und geben den Inhalt der Variable aus.
+				Nun muss dem Programm nur noch die Bedingung für das Auslösen eines Interrupts mitgeteilt werden:
+
+				￼
+				GPIO.add_event_detect(24, GPIO.RISING, callback = Interrupt, bouncetime = 200)
+				1
+				GPIO.add_event_detect(24, GPIO.RISING, callback = Interrupt, bouncetime = 200)
+				Jetzt wird der Interrupt von GPIO 24 aktiviert. Als Auslösekriterium gebe ich eine steigende Flanke an und mittels callback = Interrupt sage ich, dass das Programm bei einem Interrupt in 
 
 								
 				</script>
