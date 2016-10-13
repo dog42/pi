@@ -79,29 +79,18 @@ https://github.com/D0gi/reveal.js
 				<i class="fa fa-2x fa-list"></i>
 
 				<ul style="list-style-type:none">
-				<li><h3>1. Einleitung</h3></li>
-				<li><h3>2. Grundlagen</h3></li>
-				<li><h3>3. GPIOs</h3></li>
-				<li><h3>4. Motoren & H-Brücke</h3></li>
-				<li><h3>5. Ultraschall Modul HC-SR04</h3></li>
-				<li><h3>6. I²C</h3></li>
-				<li><h3>7. Servos</h3></li>
-				<li><h3>8. REST & co</h3></li>
+				<li><h3>1. Grundlagen</h3></li>
+				<li><h3>2. GPIOs</h3></li>
+				<li><h3>3. Motoren & H-Brücke</h3></li>
+				<li><h3>4. Ultraschall Modul HC-SR04</h3></li>
+				<li><h3>5. I²C</h3></li>
+				<li><h3>6. Servos</h3></li>
+				<li><h3>7. REST & co</h3></li>
 				</ul>			
 				</script>
 			</section>
 
-			<section data-markdown section data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-element-attributes="{_\s*?([^}]+?)}" data-separator-notes="^note:">
-				<script type="text/template">
-				<p class="bla">Einleitung </p>
-				
-				# Einleitung
-				
-				note: $nicht vollständig
-
-								
-				</script>
-			</section>
+			
 
 			<section data-markdown section data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-element-attributes="{_\s*?([^}]+?)}" data-separator-notes="^note:">
 				<script type="text/template">
@@ -148,8 +137,30 @@ https://github.com/D0gi/reveal.js
 
 				<p class="bla">GPIOs</p>
 
+				- GPIO - General Purpose Input Output
+
+				- 26/40 Pins
+
+				- 3,3V Aus- & Eingangsspannung !
+					
+					< 0,8V ~ LOW
+
+					\> 1,6V ~ HIGH
+
+					\> 3,3V ~ TOT  
+
+				- max. 16mA pro Pin & 50mA insgesamt
+
+				--
+
+				<p class="bla">GPIOs</p>
+
 
 				<img id="gpio_pin" src="img/gpio_pin_dark.png" width="75%" href="#" ></img>
+
+				- I²C, SPI, UART
+
+				note:PWM
 
 				--
 
@@ -429,10 +440,12 @@ int getCM() {
 		// The "normal" size of the presentation, aspect ratio will be preserved
 	    // when the presentation is scaled to fit different resolutions. Can be
 	    // specified using percentage units.
-	    //width: 1280,
-	    //height: 720,
-	    //width: 1920,
-	    //height: 1080,
+	    // width: 1280,
+	    // height: 720,
+	    // width: 1920,
+	    // height: 1080,
+	    // width: 1920,
+	    // height: 1080,
 
 	    // Factor of the display size that should remain empty around the content
 	    //margin: 0.2,
