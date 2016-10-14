@@ -515,11 +515,13 @@ except KeyboardInterrupt:
 
 				<p class="bla">I²C </p>
 
-				- `i2cdetect -y 0`
+				- Programm `i2ctools`
 
-				- `i2cset -y 0 0x08 0x15 0x42`
+					- `i2cdetect -y 0`
 
-				- `i2cget -y 0 0x27 w`
+					- `i2cset -y 0 0x08 0x15 0x42`
+
+					- `i2cget -y 0 0x27 w`
 
 				--
 
@@ -605,6 +607,33 @@ int main(int argc, char const *argv[]) {
 
 				<img  src="fritzing/servo_Steckplatine.png" width="65%" href="#" ></img>
 
+				--
+
+				<p class="bla">Servos</p>
+
+				<pre><code>
+import RPi.GPIO as GPIO
+import time
+
+pin = 14
+GPIO.setmode(GPIO.BCM) #Pinbelegung nach Broadcom SOC channel
+GPIO.setup(pin, GPIO.OUT)
+servo = GPIO.PWM( pin, 50) # an GPIO 14 PWM mit 50Hz (20ms) 
+servo.start(7) # Start-Position/-Pulslange(1ms)
+try:
+  while True:
+    servo.ChangeDutyCycle(2.5)
+    time.sleep(1)
+    servo.ChangeDutyCycle(7)
+    time.sleep(1)
+    servo.ChangeDutyCycle(11.5)
+    time.sleep(1)
+    servo.ChangeDutyCycle(7)
+    time.sleep(4)
+except KeyboardInterrupt:
+  servo.stop()
+  GPIO.cleanup()
+			</pre></code>
 
 								
 				</script>
@@ -623,7 +652,7 @@ int main(int argc, char const *argv[]) {
 			</section>
 
 			<!-- ###################### Wichtig, Damit Code Farbig, Drinn lassen!-->
-			<section><pre><code></code></pre></section>
+			<section><pre><code></pre></code></section>
 			<!-- ############################################################################################################################# -->
 		</div>
 		<div class="slide-footer">
