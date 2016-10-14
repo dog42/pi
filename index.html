@@ -122,7 +122,7 @@ https://github.com/D0gi/reveal.js
 
 				<p class="bla">Grundlagen</p>
 
-				- `cd` - Verzeichniswechsel
+				- `cd` -Verzeichniswechsel
 
 				- `ls` - Verzeichnisinhalt anzeigen
 
@@ -241,14 +241,122 @@ https://github.com/D0gi/reveal.js
 
 				--
 
-				<p class="bla">GPIOs -Programm `gpio`</p>
+				<p class="bla">GPIOs - Programm `gpio`</p>
+
+
+				- `gpio -g mode 7 out` (in/pwm/clock/up/down/tri)
+
+				- `gpio -g write 7 0 `
+
+				- `gpio -g read 7`
+
+				- `gpio readall`
+
+				- `man gpio`
+
+
+
 
 				--
 
-				<p class="bla">GPIOs -Bibliotheken</p>
+				<p class="bla">GPIOs - Bibliotheken</p>
 
 
-				
+
+				<pre><code>
+					
+#include <stdio.h>
+#include <stdlib.h>
+#include <wiringPi.h>
+ 
+ 
+#define TRIG 1
+#define ECHO 5
+#define LED  6
+ 
+void setup() {
+        wiringPiSetup();
+        pinMode(TRIG, OUTPUT);
+        pinMode(LED, OUTPUT);
+        pinMode(ECHO, INPUT);
+ 
+        //TRIG pin must start LOW
+        digitalWrite(TRIG, LOW);
+        delay(30);
+}
+ 
+int getCM() {
+        //Send trig pulse
+        digitalWrite(TRIG, HIGH);
+        delayMicroseconds(20);
+        digitalWrite(TRIG, LOW);
+ 
+        //Wait for echo start
+        while(digitalRead(ECHO) =
+        	while(digitalRead(ECHO) == HIGH);
+        long travelTime = micros() - startTime;
+
+
+        int distance = travelTime / 58;
+ 	
+        return distance;
+}
+ 
+int main(void) {
+        setup();
+	int dist;
+ 	while(TRUE){
+        	printf("Distance: %dcm\n", dist=getCM());
+		digitalWrite(LED, (dist<=10 ? HIGH:LOW));
+		delay(500);
+ 	}
+        return 0;
+}
+				</code></pre>
+
+
+				--
+
+
+
+
+
+
+
+
+				<p class="bla">GPIOs - Bibliotheken</p>
+
+				<pre><code>
+import RPi.GPIO as GPIO
+import time
+
+# BCM-Bezeichnung der Pins verwenden
+GPIO.setmode(GPIO.BCM)
+
+LED = 18                  # GPIO 18 auf Ausgang setzen
+GPIO.setup(LED, GPIO.OUT)
+
+# PWM einschalten
+pwm = GPIO.PWM(LED, 50); 
+pwm.start(0)
+
+try:
+  while True:
+    # langsam aufdimmen
+    for c in range(0, 101, 2):
+      pwm.ChangeDutyCycle(c)
+      time.sleep(0.1)
+    # langsam runterdimmen
+    for c in range(100, -1, -2):
+      pwm.ChangeDutyCycle(c)
+      time.sleep(0.1)
+
+# Abbruch durch Taste Strg-C
+except KeyboardInterrupt:
+  pwm.stop()
+  GPIO.cleanup()
+  </code></pre>
+
 
 				--
 
@@ -285,52 +393,6 @@ https://github.com/D0gi/reveal.js
 				
 				<img  src="fritzing/led_taster_Steckplatine.png" width="65%" href="#" ></img>
 
-				--
-				
-				gpio -g wfi 17 falling
-
-				(wfi – wait for interrupt)
-
-
-
-				http://www.forum-raspberrypi.de/Thread-sensor-signal-per-interrupt-abfragen
-
-				http://www.raspberry-pi-geek.de/Magazin/2013/05/Tricks-zum-Programmieren-der-GPIO-Schnittstelle
-
-				http://kampis-elektroecke.de/?page_id=3740
-				1
-				GPIO.setup(24, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
-				Anschließend deklariere ich die ISR, also den Programmabschnitt der ausgeführt werden soll sobald ein Interrupt ausgelöst wird:
-
-				￼
-				def Interrupt(channel):
-				   global Counter
-				   Counter = Counter + 1
-				   print "Counter " + str(Counter)
-				1
-				2
-				3
-				4
-				def Interrupt(channel):
-				   global Counter
-				   Counter = Counter + 1
-				   print "Counter " + str(Counter)
-				Die Zeile
-
-				￼
-				global Counter
-				1
-				global Counter
-				sorgt dafür, dass ich die Variable Counter in der ISR verändern darf, da dadurch eine Referenz auf die globale Variable Counter erzeugt wird.
-				Dies ist notwendig da ich die Variable Counter verändern möchte. Wenn ich sie nur lesen will, kann ich diese Zeile weglassen.
-				Die anderen beiden Zeilen erhöhen die Variable und geben den Inhalt der Variable aus.
-				Nun muss dem Programm nur noch die Bedingung für das Auslösen eines Interrupts mitgeteilt werden:
-
-				￼
-				GPIO.add_event_detect(24, GPIO.RISING, callback = Interrupt, bouncetime = 200)
-				1
-				GPIO.add_event_detect(24, GPIO.RISING, callback = Interrupt, bouncetime = 200)
-				Jetzt wird der Interrupt von GPIO 24 aktiviert. Als Auslösekriterium gebe ich eine steigende Flanke an und mittels callback = Interrupt sage ich, dass das Programm bei einem Interrupt in 
 
 								
 				</script>
@@ -393,13 +455,18 @@ https://github.com/D0gi/reveal.js
 				<p class="bla">I²C </p>
 				
 				# I²C 
+
+				--
+
+				<p class="bla">I²C </p>
+
 				<img id="i2cimg"  src="img/i2c_dark.svg" width="100%" href="#"  ></img>
 
 				--
 
 				<p class="bla">I²C </p>
 
-				##activate I2C
+				
 				- device/file erzeugen
 
 					`sudo mknod /dev/i2c-0 c 89 0`
@@ -415,74 +482,102 @@ https://github.com/D0gi/reveal.js
 				blacklist i2c-bcm2708
 				</code></pre>
 
-				- modul hinzufügen				
-					`sudo nano /etc/modules` 
-					i2c-dev
+				- zu /etc/modules hinzufügen				
+					<pre><code>i2c-dev</code></pre>
 
-				--
-
-				<pre><code>
-					
-#include <stdio.h>
-#include <stdlib.h>
-#include <wiringPi.h>
- 
- 
-#define TRIG 1
-#define ECHO 5
-#define LED  6
- 
-void setup() {
-        wiringPiSetup();
-        pinMode(TRIG, OUTPUT);
-        pinMode(LED, OUTPUT);
-        pinMode(ECHO, INPUT);
- 
-        //TRIG pin must start LOW
-        digitalWrite(TRIG, LOW);
-        delay(30);
-}
- 
-int getCM() {
-        //Send trig pulse
-        digitalWrite(TRIG, HIGH);
-        delayMicroseconds(20);
-        digitalWrite(TRIG, LOW);
- 
-        //Wait for echo start
-        while(digitalRead(ECHO) =
-				</code></pre>
-			
-				
-
-				
-					
 				
 				
 				--
 
 				<p class="bla">I²C </p>
 
-				##activate I2C
+				
 
-				`sudo modprobe i2c-bcm2708`
-				
-				`sudo modprobe i2c_dev`
-				
-				`lsmod`
+				- kernelmodule laden/hinzufügen
 
-				ab Kernelversion 3.18
+					`sudo modprobe i2c-bcm2708`
 				
-				`sudo nano /boot/config.txt`
+					`sudo modprobe i2c_dev`
+				
+					`lsmod`
 
-				dtparam=i2c1=on
-				
+				- ab Kernelversion 3.18: /boot/config.txt editiern
+				<pre><code>dtparam=i2c1=on
 				dtparam=i2c_arm=on
-				
-				`sudo reboot`
+				</code></pre>
+
+				- `sudo reboot`
 
 				note: $nicht vollständig
 
+
+				--
+
+				<p class="bla">I²C </p>
+
+				- `i2cdetect -y 0`
+
+				- `i2cset -y 0 0x08 0x15 0x42`
+
+				- `i2cget -y 0 0x27 w`
+
+				--
+
+				<pre><code>#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <linux/i2c-dev.h>
+#include <sys/ioctl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdint.h>
+#include <string.h>
+
+int wi2c(uint8_t addr, uint16_t reg, uint8_t value)
+{
+  
+  uint8_t res, w[2];
+  w[0] = (reg)&0xff;
+  w[1] = (reg>>8)&0xff;
+  w[2] = value;
+  int fd;
+  if ((fd = open("/dev/i2c-1", O_RDWR)) < 0) {
+    printf("open error! %d\n", fd);
+    return -1;
+  }
+  if (ioctl(fd, I2C_SLAVE, addr) < 0) {
+    printf("address error!\n");
+    return -1;
+  }
+  if (write(fd, w, 3) != 3) {
+    printf("write error!\n");
+    return -1;
+  }
+  if (read(fd, &res, 1) != 1) {
+    printf("read error!\n");
+    return -1;
+  }
+  close(fd);
+  printf("-->0x%02x \n", res);
+  return 1;
+}
+
+int main(int argc, char const *argv[]) {
+  if (argc > 1){
+   uint8_t addr = strtol(argv[1], NULL , 16);
+   uint16_t reg = strtol(argv[2], NULL , 16);
+   uint8_t value = strtol(argv[3], NULL , 16);
+   printf("0x%02x 0x%04x\n",addr,reg);
+   reg=(((reg&0xff)<<8)&0xff00)|(((0xff00&reg)>>8)&0xff);
+   wi2c(addr, reg, value);
+  }
+  return 0;
+}
+</code></pre>
+
+
+				
 				
 				</script>
 			</section>
