@@ -15,12 +15,10 @@
 
 int fd,fd2;
 
-char GPIO[4][30] = {	"/sys/class/gpio/gpio22/value", // Array für die GPIOs
-			"/sys/class/gpio/gpio27/value", 
-			"/sys/class/gpio/gpio17/value",
-			"/sys/class/gpio/gpio4/value"}; 
-char Device_Value[] = "/sys/class/gpio/gpio7/value";
-char Device_Direction[] = "/sys/class/gpio/gpio7/direction";
+char GPIO[4][30] = {	"/sys/class/gpio/gpio23/value", // Array für die GPIOs
+			"/sys/class/gpio/gpio25/value", 
+			"/sys/class/gpio/gpio24/value",
+			"/sys/class/gpio/gpio8/value"}; 
 
 char dir[5][4][2] ={ 	{"0","0","0","0"},		//STOP	= 0
 			{"0","1","0","1"},		//ZURÜCK= 1
@@ -31,12 +29,6 @@ char dir[5][4][2] ={ 	{"0","0","0","0"},		//STOP	= 0
 char Input;
 int i;
 int res,x=0;
-
-
-
-
-
-
 
 int gpiowrite(int d){
 	int i;
@@ -60,11 +52,6 @@ int main( int argc, char *argv[] )
     char buffer[256];
     struct sockaddr_in serv_addr, cli_addr;
     int  n, pid;
-	
-    // Pin als Eingang schalten
-    fd = open(Device_Direction, O_RDWR);
-    write(fd, "in", 2);
-    close(fd);
 
 
     /* First call to socket() function */
@@ -129,7 +116,7 @@ int main( int argc, char *argv[] )
     } /* end of while */
 }
 
-void doprocessing (int sock)
+int doprocessing (int sock)
 {
     int n;
     char buffer[256];
@@ -168,23 +155,7 @@ else if(strncmp(buffer,"DRUC",4)==0)
 	printf("%s\n",buffer);
 	}
 
-else if(strncmp(buffer,"UVOR",4)==0)
-	{gpiowrite(0);
-	//sleep(1);
-	printf("%s\n",buffer);
-	}
-else if(strncmp(buffer,"ULIN",4)==0)
-	{gpiowrite(0);
-	//sleep(1);
-	printf("%s\n",buffer);
-	}
-else if(strncmp(buffer,"UREC",4)==0)
-	{gpiowrite(0);
-	//sleep(1);
-	printf("%s\n",buffer);
-	}
-else if(strncmp(buffer,"URUC",4)==0)
-	{gpiowrite(0);
+else{gpiowrite(0);
 	//sleep(1);
 	printf("%s\n",buffer);
 	}
