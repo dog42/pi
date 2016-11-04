@@ -7,7 +7,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 TRIGGER = 18
-ECHO = 24
+ECHO = 17
 
 # Schallgeschwindigkeit in m/s
 Schallgeschwindigkeit = 331

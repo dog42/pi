@@ -13,10 +13,11 @@
 #include <netdb.h>
 #include <linux/input.h>
 #include <signal.h>
+#include <pthread.h>
 
 
-
-int fd,fd2;
+int fd,fd2,sockfd;
+uint8_t emergestop=0;
 
 char Input;
 int i;
@@ -58,13 +59,48 @@ void error(const char *msg)
 void INThandler(){
   exit(0);
 }
+ void *thread(void *arg){
+char buffer[256];
+uint16_t value,med[5],median,index;
+int n;
+printf("wallthead running\n");
+	while(1) {
+    bzero(buffer,256);
 
+	n = read(sockfd,buffer,2);
+    if (n < 0)
+    {
+        perror("ERROR reading from socket");
+        exit(1);
+    }
+
+value=atoi(buffer);
+//printf("%d\n",value);
+index++;
+if (index>=5)index=0;
+med[index]=value;
+median=(med[0]+med[1]+med[2]+med[3]+med[4])/5;
+//printf("value:%d\n",value);
+if(median<17)if((value<10)&&(value>5)){printf("%d stop!\n",value);
+
+strcpy(buffer,"0\n");
+//usleep(100000);
+n = write(sockfd,buffer,strlen(buffer));
+      if (n < 0) {error("ERROR writing to socket");}
+
+}
+}
+
+}
 
 int main(int argc, char** argv)     
 {
-  int sockfd, portno, n;
+  int  portno, n;
   struct sockaddr_in serv_addr;
   struct hostent *server;
+char* strings[] = {"hello ", "world\n"};
+    pthread_t thread1;
+//pthread_init();
 
   char buffer[256];
   if (argc < 3) {
@@ -91,12 +127,12 @@ if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0)
 
 
 char devname[] = "/dev/input/by-id/usb-_USB_Keyboard-event-kbd";
-int device = open(devname, O_RDONLY);
+int device = open(argv[3], O_RDONLY);
 struct input_event ev;
 
 signal(SIGINT, INThandler);
 
-
+pthread_create(&thread1, NULL, thread, strings);
 
 
 
@@ -159,19 +195,19 @@ while(1)
   if(w+a+s+d){
     if(w+a+s+d > 1){
       switch(last){
-        case 458778 : strcpy(buffer,"DVOR\n"); //w
+        case 458778 : strcpy(buffer,"DRUC\n"); //w 
         break;
         case 458756 : strcpy(buffer,"DREC\n"); //a
         break;
-        case 458774 : strcpy(buffer,"DRUC\n"); //s
+        case 458774 : strcpy(buffer,"DVOR\n"); //s
         break;
         case 458759 : strcpy(buffer,"DLIN\n"); //d
         break;
       }
     }else{
-      if(w){strcpy(buffer,"DVOR\n");}
+      if(w){strcpy(buffer,"DRUC\n");}
       if(a){strcpy(buffer,"DREC\n");}
-      if(s){strcpy(buffer,"DRUC\n");}
+      if(s){strcpy(buffer,"DVOR\n");}
       if(d){strcpy(buffer,"DLIN\n");}
     }
   }else{
