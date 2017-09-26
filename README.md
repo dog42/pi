@@ -5,8 +5,6 @@
 
 
 # edit raspian.img
-  to do
-## mount image
 
 - make mountdir `sudo mkdir /media/$USER/bla`
 - open img file whit `sudo kpartx -a <raspian.img>`
