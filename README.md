@@ -4,8 +4,9 @@
 
 
 
-#edit raspian.img
-##mount image
+# edit raspian.img
+  to do
+## mount image
 
 - make mountdir `sudo mkdir /media/$USER/bla`
 - open img file whit `sudo kpartx -a <raspian.img>`
@@ -20,7 +21,7 @@
 - rm mountdir `sudo rm -r /media/$USER/bla`
 
 
-##edit rc.local
+## edit rc.local
 
 add the folowing to `/etc/rc.local` to auto load and run the configfiles on startup:
 
@@ -30,7 +31,7 @@ add the folowing to `/etc/rc.local` to auto load and run the configfiles on star
 `./home/pi/.piconf/pi-master/go.sh`
 
 
-##[Präsentation](https://d0gi.github.io/pi)
+## [Präsentation](https://dog42.github.io/pi)
 
 
 Also see [MultiPiRemoteControl](https://gitlab.com/jhamfler/MultiPiRemoteControl/tree/master)
