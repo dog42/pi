@@ -5,7 +5,6 @@
 [ZIP](https://github.com/dog42/pi/archive/master.zip)
 
 
-
 # edit raspian.img
 
 - make mountdir `sudo mkdir /media/$USER/bla`
