@@ -1,4 +1,4 @@
-# pi
+# PI
 
 ## [Präsentation](https://dog42.github.io/pi)
 
